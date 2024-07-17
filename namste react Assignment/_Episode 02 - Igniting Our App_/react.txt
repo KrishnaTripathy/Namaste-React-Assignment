@@ -1,0 +1,247 @@
+1. What is `npm`?
+
+**npm** (Node Package Manager) is a tool that helps you manage JavaScript packages.
+
+### Key Points:
+- **Install Packages:** Easily add libraries and tools to your project.
+- **Manage Dependencies:** Keep track of versions and dependencies.
+- **Share Code:** Publish your own packages for others to use.
+
+**Example Commands:**
+- Install a package: `npm install package-name`
+- Initialize a project: `npm init`
+
+In short, npm is like an app store for JavaScript libraries and tools.
+
+2. What is `Parcel/Webpack`? Why do we need it?
+**Parcel** and **Webpack** are tools called **bundlers** used in web development.
+
+### What They Do:
+- **Bundle Files:** Combine your JavaScript, CSS, HTML, and other assets into a single or a few output files.
+- **Optimize Code:** Minify and optimize your code for better performance.
+- **Manage Dependencies:** Automatically handle the dependencies between your files.
+- **Hot Module Replacement (HMR):** Allow you to see changes in your code instantly without refreshing the browser.
+
+### Why We Need Them:
+- **Simplifies Development:** Manages and bundles all project files and dependencies.
+- **Improves Performance:** Optimizes and minifies code for faster load times.
+- **Facilitates Modern Features:** Supports modern JavaScript features (like ES6) and converts them to be compatible with older browsers.
+- **Streamlines Builds:** Automates repetitive tasks and builds processes.
+
+### Example:
+
+Without a bundler:
+- Manually link each JavaScript and CSS file in HTML.
+- Manually handle optimizations and dependencies.
+
+With a bundler:
+- Use a single command to bundle, optimize, and serve your project.
+
+In summary, Parcel and Webpack help you efficiently manage, bundle, and optimize your web development projects, making the development process smoother and the final product faster.
+
+
+3.Why is `.parcel-cache`?
+The `.parcel-cache` folder is used by Parcel to speed up the build process.
+
+### Key Points:
+- **Stores Build Data:** Keeps track of previous builds to avoid redundant work.
+- **Improves Performance:** Significantly speeds up subsequent builds by reusing cached information.
+- **Automatic Management:** Parcel automatically handles the cache, so you don’t need to manage it manually.
+
+In short, `.parcel-cache` makes your builds faster by storing and reusing data from previous builds.
+
+4.What is `npx`?
+**npx** is a command-line tool that comes with npm version 5.2.0 and above.
+
+### Key Points:
+- **Execute Packages:** Runs npm packages without needing to install them globally.
+- **Latest Version:** Always uses the latest version of a package.
+- **Temporary Usage:** Doesn't clutter your global npm package list.
+
+In short, **npx** runs npm packages instantly, without the need for prior installation, making it handy for one-time tasks or using packages not installed globally.
+
+5.What is difference between `dependencies vs devDependencies`?
+**dependencies** and **devDependencies** are both categories of packages managed by npm or Yarn in a `package.json` file.
+
+### Key Differences:
+
+- **dependencies:**
+  - Needed for the application to run.
+  - Installed in production environments.
+  - Examples: React, Express.
+
+- **devDependencies:**
+  - Only needed for development and testing purposes.
+  - Not installed in production environments.
+  - Examples: Testing frameworks (like Jest), build tools (like webpack).
+
+In short:
+- **dependencies:** Needed for the app to work.
+- **devDependencies:** Only needed for development and testing.
+
+6.What is Tree Shaking?
+**Tree shaking** is a technique used in JavaScript module bundlers (like Webpack) to eliminate unused code from your final bundle.
+
+### Key Points:
+- **Eliminates Unused Code:** Removes code that is imported but not used in your application.
+- **Optimizes Bundle Size:** Reduces the size of your JavaScript bundle, improving load times.
+- **Works with ES6 Modules:** Relies on the static structure of ES6 modules to analyze and remove unused exports.
+
+In short, tree shaking helps make your JavaScript bundles smaller and more efficient by getting rid of code that your application doesn't actually use.
+
+7.What is Hot Module Replacement?
+**Hot Module Replacement (HMR)** is a feature in module bundlers like Webpack that updates modules in the browser without requiring a full refresh.
+
+### Key Points:
+- **Instant Updates:** Automatically applies changes to the code in the browser as you develop, without reloading the entire page.
+- **Preserves State:** Maintains the current application state during updates, which can save time and improve developer productivity.
+- **Enhances Developer Experience:** Speeds up development by allowing real-time updates to code and UI components.
+
+In short, Hot Module Replacement improves the development process by updating modules in the browser instantly, preserving state, and saving time during code changes.
+
+8.List down your favourite 5 superpowers of Parcel and describe any 3 of them in your own words.
+
+Zero Configuration: Start coding without setting up complex configurations.
+
+Blazing Fast: Speeds up development with fast bundling and hot module replacement.
+
+Automatic Asset Handling: Automatically handles assets like images and CSS.
+
+Code Splitting: Splits code into smaller bundles for efficient loading.
+
+Supports Multiple File Types: Works seamlessly with JavaScript, CSS, HTML, and more.
+
+Here are my favorite 5 superpowers of Parcel:
+
+1. **Zero Configuration:** Start coding without setting up complex configurations.
+   
+2. **Blazing Fast:** Speeds up development with fast bundling and hot module replacement.
+
+3. **Automatic Asset Handling:** Automatically handles assets like images and CSS.
+
+4. **Code Splitting:** Splits code into smaller bundles for efficient loading.
+
+5. **Supports Multiple File Types:** Works seamlessly with JavaScript, CSS, HTML, and more.
+
+### Describing 3 Superpowers:
+
+**Blazing Fast:** Parcel excels in speed, quickly bundling your project and offering instant updates with hot module replacement (HMR). This means you see changes in your code reflected instantly in the browser without manual refreshes, enhancing your workflow efficiency.
+
+**Automatic Asset Handling:** One of Parcel's standout features is its ability to handle assets like images and CSS files automatically. This means you can import these assets directly into your JavaScript or HTML without configuring loaders or plugins, saving time and reducing complexity in your build setup.
+
+**Code Splitting:** Parcel automatically analyzes your project's dependencies and splits them into smaller bundles. This helps in optimizing load times by ensuring that only necessary code is loaded initially, and additional parts are loaded as needed, improving overall performance of your application.
+
+
+9.What is `.gitignore`? What should we add and not add into it?
+**.gitignore** is a file used by Git to specify which files and directories should be ignored and not tracked in version control.
+
+### What to Add:
+- **Sensitive Data:** API keys, passwords, and other confidential information.
+- **Generated Files:** Build outputs, logs, and temporary files.
+- **Dependencies:** Libraries and modules managed by package managers (like `node_modules/` for Node.js).
+
+### What Not to Add:
+- **Source Code:** Your main application files and components should not be ignored.
+- **Config Files:** Configuration files necessary for your project's setup should be tracked.
+- **Documentation:** Include any essential documentation files in version control.
+
+In short, **.gitignore** helps keep your Git repository clean by excluding files and directories that don't belong in version control, like sensitive data and generated files.
+
+10.What is the difference between `package.json` and `package-lock.json` files?
+
+package.json : It is a configuration for npm, it kepps a track of what version of that package is installed in to our system.
+package-lock.json : keep the record of exact version of that package or dependencies.
+
+11.Why should I not modify `package-lock.json`?
+Do not modify `package-lock.json` because it keeps track of exact versions of dependencies to ensure consistent installations. Manual changes can lead to version conflicts and inconsistent builds.
+
+12.What is `node_modules`? Is it a good idea to push that on git?
+
+**node_modules** is a directory where npm or Yarn installs packages (dependencies) for your Node.js project.
+
+### Key Points:
+- **Purpose:** Stores all the libraries and modules your project depends on.
+- **Contents:** Contains nested folders for each package with its own dependencies.
+- **Size:** Can become very large depending on the number of packages and their dependencies.
+
+### Should You Push `node_modules` to Git?
+- **No:** It's not recommended to push `node_modules` to Git.
+- **Why:** It increases repository size significantly and contains thousands of files that can slow down cloning and updates. Plus, it's unnecessary because npm or Yarn can re-create `node_modules` based on `package.json` using `npm install` or `yarn install`.
+
+In short, **node_modules** is where dependencies are stored, but pushing it to Git isn't advisable due to size and redundancy.
+
+13.What is the `dist` folder?
+
+The **dist** folder (short for "distribution") is where you put files ready for deployment after building your project.
+
+### Key Points:
+- **Purpose:** Contains optimized and bundled files ready for production use.
+- **Contents:** Typically includes minified JavaScript, CSS, and HTML files, along with images and other assets.
+- **Usage:** These files are what you upload or deploy to a web server or hosting service for your website or application to go live.
+
+In short, **dist** is where your finalized and optimized project files are stored before deployment to make your website or app live.
+
+
+14.What is `browserlists`? and Read about different bundlers: vite, webpack, parcel
+### What is `browserslist`?
+
+**Browserslist** is a configuration file or query used by front-end tools like Autoprefixer, Babel, and others to determine which browsers to support with your CSS and JavaScript.
+
+- **Purpose:** Specifies which browser versions and platforms (like Chrome, Firefox, Safari) your project needs to support.
+- **Usage:** Helps tools like Autoprefixer add vendor prefixes and Babel transpile code to ensure compatibility with specified browsers.
+- **Example:** 
+  ```
+  last 2 versions, > 5%
+  ```
+  This means support the last 2 versions of all browsers and those with more than 5% market share.
+
+### Bundlers:
+
+1. **Vite:**
+   - **Purpose:** Focuses on fast development with instant server start and hot module replacement (HMR).
+   - **Features:** Optimizes for modern browsers, uses ES modules for faster bundling, and supports Vue.js and React out of the box.
+   - **Usage:** Ideal for modern web development, especially for large-scale applications needing quick development feedback.
+
+2. **Webpack:**
+   - **Purpose:** Highly configurable bundler for JavaScript applications.
+   - **Features:** Handles diverse assets, supports code splitting, and includes a plugin system for extensive customization.
+   - **Usage:** Widely used in complex projects for its flexibility and ability to handle various dependencies and optimizations.
+
+3. **Parcel:**
+   - **Purpose:** Zero-configuration bundler focusing on ease of use and fast setup.
+   - **Features:** Automatically handles assets, supports hot module replacement (HMR), and optimizes builds without requiring extensive setup.
+   - **Usage:** Suitable for smaller projects or developers who prefer minimal configuration and quick setup.
+
+In short, **browserslist** helps ensure cross-browser compatibility, while **Vite**, **Webpack**, and **Parcel** are bundlers with different strengths in terms of speed, configuration flexibility, and ease of use, catering to various needs in web development.
+
+
+15. what is `^-caret` and `~-tilde`?
+   ^-caret : it helps in automatically upgraded the parcel version . 
+   it upgraded the minor version. it is better.
+  
+   ~-tilde : it always install major version automatically.
+
+16.React about Script types in html ?
+Sure!
+
+In HTML, script tags can have different types:
+
+1. **No Type Specified:**
+   - Default type is `text/javascript`.
+   - Used for JavaScript code.
+
+2. **Type `module`:**
+   - Indicates the script is a module.
+   - Allows for modern JavaScript features like `import` and `export`.
+
+3. **Type `text/babel`:**
+   - Used with tools like Babel to transpile JSX and modern JavaScript for older browsers.
+   - Requires additional setup for compilation, not native browser support.
+
+Using the correct type ensures scripts are interpreted correctly by the browser or other tools.
+
+
+   
+
+
+

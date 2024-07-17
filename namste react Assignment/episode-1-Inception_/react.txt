@@ -1,0 +1,129 @@
+1. what is `Emmet` ?
+
+Emmet is a plugin for code editors that provides shorthand syntax for writing HTML and CSS, speeding up the coding process. It's widely used in front-end development to quickly generate HTML structures.
+
+In React, Emmet can be used to write JSX more efficiently. For example:
+
+Instead of typing:
+
+```jsx
+<div className="container">
+  <h1>Hello, world!</h1>
+  <p>This is a paragraph.</p>
+</div>
+```
+
+You can type:
+
+```jsx
+div.container>h1{Hello, world!}+p{This is a paragraph.}
+```
+
+Then, with Emmet enabled, you expand this abbreviation to get the full HTML structure. This works in editors like VS Code where Emmet support is built-in.
+
+
+2.What is `CDN`? Why do we `use` it?
+
+A **CDN** (Content Delivery Network) is a system of distributed servers that deliver web content to users based on their geographic location.
+
+**Why use a CDN?**
+- **Speed:** Reduces loading time by serving content from a server close to the user.
+- **Reliability:** Ensures content is always available, even if one server fails.
+- **Scalability:** Handles large amounts of traffic efficiently.
+- **Security:** Provides protection against DDoS attacks and other threats.
+
+
+3.Why is `React known as React`?
+
+React is called **React** because it enables building **reactive** user interfaces. This means it efficiently updates and renders components when data changes, creating a responsive and dynamic user experience.
+
+4.What is `crossorigin in script tag`?
+
+The `crossorigin` attribute in a script tag is used to manage how the browser handles cross-origin requests for the script.
+
+**Why use it?**
+- **Sharing resources:** Allows scripts to be shared across different origins.
+- **Error handling:** Enables better error reporting from external scripts.
+- **Security:** Helps manage CORS (Cross-Origin Resource Sharing) policies.
+
+Example:
+
+```html
+<script src="https://example.com/script.js" crossorigin="anonymous"></script>
+```
+
+5. What is difference between `React and ReactDOM`?
+
+**React** and **ReactDOM** serve different purposes in the React library:
+
+- **React:** Contains the core functionality for building components and managing their state and lifecycle.
+- **ReactDOM:** Provides methods to interact with the DOM, such as rendering React components to the browser.
+
+In short:
+- **React:** For building UI components.
+- **ReactDOM:** For rendering those components to the web page.
+
+6.What is difference between `react.development.js` and `react.production.js` files via CDN?
+
+The difference between `react.development.js` and `react.production.js` files via CDN is:
+
+- **react.development.js:** Used during development, includes helpful warnings and error messages for debugging.
+- **react.production.js:** Used in production, is optimized and minified for better performance and smaller file size. 
+
+In short:
+- **Development:** For debugging (more info).
+- **Production:** For live websites (faster).
+
+7.what is arrow function ?
+
+An arrow function is a concise way to write functions in JavaScript using the `=>` syntax. It has several key characteristics:
+
+### Syntax:
+- **Shorter:** Uses `=>` instead of the `function` keyword.
+- **Implicit return:** If the function body has only one expression, it can be written without `{}` and will return the result automatically.
+
+### Examples:
+Traditional function:
+```javascript
+function add(a, b) {
+  return a + b;
+}
+```
+
+Arrow function:
+```javascript
+const add = (a, b) => a + b;
+```
+
+### Key Characteristics:
+- **Lexical `this`:** Arrow functions do not have their own `this` context; they inherit `this` from the surrounding function. This is useful in situations where you want to preserve the context of `this`.
+- **No `arguments` object:** Arrow functions do not have their own `arguments` object. They can use rest parameters `...args` if needed.
+- **Not suitable for all cases:** Arrow functions are not suitable for methods in object literals and when you need a function with its own `this`.
+
+### Example of lexical `this`:
+Traditional function with `this`:
+```javascript
+function Person() {
+  this.age = 0;
+
+  setInterval(function() {
+    this.age++; // `this` refers to the global object, not the `Person` instance
+  }, 1000);
+}
+```
+
+Arrow function with `this`:
+```javascript
+function Person() {
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++; // `this` refers to the `Person` instance
+  }, 1000);
+}
+```
+
+In summary, arrow functions provide a more concise syntax and a different `this` behavior compared to traditional functions, making them particularly useful in certain contexts like callbacks and methods that need to preserve the outer `this`.
+
+
+
