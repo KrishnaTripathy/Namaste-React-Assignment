@@ -1,0 +1,36 @@
+1.What is the `difference` between `Named export`, `Default export`, and `* as export`?
+
+Here’s a simple breakdown:
+
+1. **Named Export**:
+   - **Export**: `export const myFunc = () => {};`
+   - **Import**: `import { myFunc } from './myModule';`
+   - **Usage**: You can export multiple items by name and import only the ones you need.
+
+2. **Default Export**:
+   - **Export**: `export default function myFunc() {};`
+   - **Import**: `import myFunc from './myModule';`
+   - **Usage**: There is only one default export per module. It’s often used for a single main export.
+
+3. **`* as` Export**:
+   - **Export**: `export * from './myModule';` (from a different module)
+   - **Import**: `import * as myModule from './myModule';`
+   - **Usage**: Imports everything from a module as a single object, so you can access all exports using `myModule.someExport`.
+
+
+2.What are `React Hooks`?
+
+React Hooks are functions that let you use state and other React features in functional components. They make it easier to manage component state, side effects, and more, without needing to use class components. 
+
+Here are a few common ones:
+
+- **`useState`**: Manages state in a functional component.
+- **`useEffect`**: Handles side effects like data fetching or DOM manipulation.
+- **`useContext`**: Accesses context values.
+
+They help keep your component logic organized and reusable.
+
+3.Why do we need `useState Hook`?
+
+The `useState` Hook is needed to manage and update the state in functional components. It allows you to keep track of data that can change over time, like form inputs or toggled values, and ensures the component re-renders when the state changes.
+
