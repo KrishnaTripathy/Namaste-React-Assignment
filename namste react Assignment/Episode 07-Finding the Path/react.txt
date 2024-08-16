@@ -1,0 +1,143 @@
+1. What are various ways to `add images` into our App? Explain with `code examples`.
+
+Here are simplified and concise ways to add images in a React app:
+
+### 1. **Importing Images**
+
+Import the image and use it in your component.
+
+```javascript
+import React from 'react';
+import MyImage from './path/to/image.jpg'; // Import image
+
+const ImageComponent = () => (
+    <img src={MyImage} alt="My Image" />
+);
+
+export default ImageComponent;
+```
+
+### 2. **Using the Public Folder**
+
+Place your image in the `public` folder and reference it with a relative path.
+
+```javascript
+import React from 'react';
+
+const ImageComponent = () => (
+    <img src="/images/my-image.jpg" alt="Public Image" />
+);
+
+export default ImageComponent;
+```
+
+### 3. **External URLs**
+
+Use an external image URL directly in the `src` attribute.
+
+```javascript
+import React from 'react';
+
+const ImageComponent = () => (
+    <img src="https://example.com/my-image.jpg" alt="External Image" />
+);
+
+export default ImageComponent;
+```
+
+### 4. **CSS Background Image**
+
+Use CSS to set an image as a background.
+
+**Component:**
+
+```javascript
+import React from 'react';
+import './ImageComponent.css'; // Import CSS
+
+const ImageComponent = () => (
+    <div className="image-container"></div>
+);
+
+export default ImageComponent;
+```
+
+**CSS (`ImageComponent.css`):**
+
+```css
+.image-container {
+    width: 500px;
+    height: 300px;
+    background-image: url('./path/to/image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+```
+
+### 5. **Inline CSS Background Image**
+
+Set an inline style for a background image.
+
+```javascript
+import React from 'react';
+
+const ImageComponent = () => (
+    <div style={{
+        width: '500px',
+        height: '300px',
+        backgroundImage: 'url(./path/to/image.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    }}>
+    </div>
+);
+
+export default ImageComponent;
+```
+
+These methods provide a straightforward approach to adding images to your React application, accommodating various scenarios and requirements.
+
+2.What would happen if we do `console.log(useState())`?
+If you do `console.log(useState())` in a React component, it will log an error. The `useState` hook must be called inside a functional component or another custom hook, not in the global scope or inside a console log directly. 
+
+**Example of Correct Usage:**
+
+```javascript
+import React, { useState } from 'react';
+
+const ExampleComponent = () => {
+  const [state, setState] = useState(0);
+  console.log([state, setState]); // This is the correct context
+
+  return (
+    <div>
+      <p>State value: {state}</p>
+      <button onClick={() => setState(state + 1)}>Increment</button>
+    </div>
+  );
+};
+
+export default ExampleComponent;
+```
+
+Attempting to use `useState()` outside of a component or custom hook will result in an error similar to: *"Invalid hook call. Hooks can only be called inside of the body of a function component."*
+
+3.How will `useEffect` behave if we `don't add` a `dependency array`?
+
+If you don't add a dependency array to `useEffect`, the effect will run after every render of the component. This means the effect function will execute on the initial render and every subsequent update, which can lead to performance issues or unintended side effects if not managed carefully.
+
+4. What is `SPA`?
+
+A **Single Page Application (SPA)** is a web app that loads a single HTML page and updates the content dynamically as the user interacts with it, without reloading the whole page. This provides a fast and smooth user experience, similar to a native app.
+
+5.What is the `difference` between `Client Side Routing` and `Server Side Routing`?
+
+**Client-Side Routing**:
+- Handled in the browser using JavaScript.
+- The app dynamically updates content without reloading the entire page.
+- Provides a faster and more seamless user experience.
+
+**Server-Side Routing**:
+- Handled on the server, where each navigation triggers a new request.
+- The server sends a complete HTML page in response to each request.
+- Can be slower due to full page reloads, but better for SEO and initial load time.
