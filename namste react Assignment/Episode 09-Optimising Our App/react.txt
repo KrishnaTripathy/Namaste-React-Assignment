@@ -1,0 +1,72 @@
+1. When and why do we need `lazy()`?
+
+You need `React.lazy()` when you want to split your code into smaller chunks and load components only when they're needed. This improves performance by reducing the initial load time of your app.
+
+Example:
+```jsx
+const MyComponent = React.lazy(() => import('./MyComponent'));
+
+function App() {
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <MyComponent />
+    </React.Suspense>
+  );
+}
+```
+
+Here, `MyComponent` is only loaded when it's rendered, making your app faster.
+
+2.What is `suspense`?
+
+`Suspense` in React is a component that lets you handle loading states for components that are being lazy-loaded or are waiting for some async data.
+
+Example:
+```jsx
+<React.Suspense fallback={<div>Loading...</div>}>
+  <MyLazyComponent />
+</React.Suspense>
+```
+
+Here, `Suspense` shows the `fallback` (like a loading spinner) while `MyLazyComponent` is being loaded. Once the component is ready, it gets displayed.
+
+
+3.Why we got this `error`: A component was suspended while responding to `synchronous input`. This will cause the `UI` to be replaced with a `loading indicator`. To `fix this`, `updates that suspend` should be wrapped with `start transition`? How does `suspense fix` this error?
+
+This error happens because React tries to load something while the user is interacting with the UI, which can make the app show a loading spinner suddenly.
+
+To prevent this, we use `startTransition` to make React handle the loading in the background without affecting the user's input.
+
+Example:
+```jsx
+startTransition(() => {
+  // Something that loads data
+});
+```
+
+`Suspense` shows a loading state, but `startTransition` keeps the UI smooth while waiting for data to load.
+
+4.`Advantages and Disadvantages` of using this `code splitting pattern`?
+
+### Advantages of Code Splitting:
+1. **Faster Load Time**: Only necessary code is loaded initially, improving page load speed.
+2. **Better Performance**: Resources are downloaded as needed, reducing the overall load on the browser.
+3. **Scalability**: Helps in managing larger codebases by splitting them into smaller, manageable chunks.
+
+### Disadvantages of Code Splitting:
+1. **Complexity**: Adds some complexity to the codebase with lazy loading and handling loading states.
+2. **Delayed Components**: Components might load with a slight delay, which can be noticeable if not handled properly.
+3. **Bundle Overhead**: If not optimized, too many small bundles can hurt performance.
+
+This pattern improves speed but requires careful management of loading and user experience.
+
+
+5.When `do we and why do we need suspense`?
+
+We need `Suspense` when we're loading components or data asynchronously, like when using `React.lazy()` for code splitting or waiting for async data (e.g., API requests).
+
+### Why:
+- **Manage loading states**: Suspense allows us to show a fallback UI (e.g., loading spinner) while the component or data is loading.
+- **Improved user experience**: It prevents blank screens by showing the fallback until everything is ready.
+
+Suspense makes the app feel smoother by handling loading processes gracefully.
