@@ -1,0 +1,76 @@
+1. What is the `order of life cycle method calls` in `Class Based Components`?
+
+In class-based components, the order of lifecycle method calls is:
+
+1. **Mounting (initial render):**
+   - `constructor()`
+   - `static getDerivedStateFromProps()`
+   - `render()`
+   - `componentDidMount()`
+
+2. **Updating (on state or prop change):**
+   - `static getDerivedStateFromProps()`
+   - `shouldComponentUpdate()`
+   - `render()`
+   - `getSnapshotBeforeUpdate()`
+   - `componentDidUpdate()`
+
+3. **Unmounting (when component is removed):**
+   - `componentWillUnmount()`
+
+2. Why do we use `componentDidMount`?
+
+`componentDidMount` is a lifecycle method in class-based React components that runs after the component has been rendered to the DOM for the first time. It is often used for:
+
+1. **Data Fetching**: You can initiate network requests (e.g., fetching data from an API) and then update the component's state with the fetched data.
+2. **DOM Manipulation**: You can perform operations that require access to the DOM (e.g., measuring elements, adding event listeners).
+3. **Setting Up Subscriptions**: It’s a good place to set up things like WebSocket connections, timers, or other side effects that need cleanup when the component is unmounted.
+
+Since it only runs once after the initial render, it’s safe for performing setup tasks that don't need to re-run on subsequent updates.
+
+
+3. Why do we use `componentWillUnmount`? Show with `example`.
+
+We use `componentWillUnmount` to clean up any side effects before the component is removed from the DOM, such as removing event listeners, clearing timers, or canceling network requests. This prevents memory leaks and keeps the application efficient.
+
+### Example:
+```js
+class MyComponent extends React.Component {
+  componentDidMount() {
+    // Set up an interval
+    this.intervalId = setInterval(() => console.log("Interval running"), 1000);
+  }
+
+  componentWillUnmount() {
+    // Clear the interval when component unmounts
+    clearInterval(this.intervalId);
+    console.log("Component unmounted, interval cleared");
+  }
+
+  render() {
+    return <div>My Component</div>;
+  }
+}
+```
+
+In this example, `componentWillUnmount` clears the interval when the component is removed from the DOM.
+
+4.Why do we use `super(props)` in `constructor`?
+We use `super(props)` in the constructor to call the parent class's constructor (`React.Component`) and pass the `props` to it. This ensures that `this.props` is available in the component, allowing access to the props within the constructor. Without it, `this.props` would be undefined.
+
+
+5.Why `can't we have` the `callback function` of `useEffect async`?
+
+We can't make the callback function of `useEffect` directly `async` because `useEffect` expects the callback to return either `undefined` or a cleanup function. An `async` function returns a Promise, which conflicts with that expectation.
+
+To handle asynchronous code inside `useEffect`, we typically define an `async` function inside the effect and call it. 
+
+Example:
+```js
+useEffect(() => {
+  async function fetchData() {
+    // async code here
+  }
+  fetchData();
+}, []);
+```
