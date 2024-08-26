@@ -1,0 +1,19 @@
+1.What is prop drilling?
+
+Prop drilling is the process of passing data from a parent component to a deeply nested child component through props. This usually involves passing the data through several layers of components, which can make the code harder to manage and maintain. 
+
+In simpler terms, if you have a parent component that needs to pass data to a grandchild component, it has to pass the data down through each intermediate component.
+
+2. What is lifting the state up?
+
+Lifting state up is the practice of moving state from a child component to a common parent component. This is done to share the state between multiple child components or to manage it in a single place. By lifting the state up, you ensure that all components that need access to the state can get it from their common parent.
+
+3.What are Context Provider and Context Consumer?
+
+**Context Provider** is a component that supplies data (state) to its child components through React's Context API. It defines the value that will be shared across the component tree.
+
+**Context Consumer** is a component that receives and uses the data provided by the Context Provider. It allows components to access the shared data without having to pass it down manually through props.
+
+4.If you don't pass a value to the provider does it take the default value?
+
+Yes, if you don’t pass a value to the Context Provider, it will use the default value specified when the context was created.
