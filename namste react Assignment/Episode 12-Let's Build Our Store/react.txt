@@ -1,0 +1,109 @@
+1.Advantages of using Redux Toolkit over Redux
+
+**Redux Toolkit** simplifies Redux development by providing:
+
+- **Less boilerplate**: Automatically generates actions and reducers, reducing manual code.
+- **Better defaults**: Includes best practices by default, like using `Immer` for immutability.
+- **Simplified configuration**: Built-in tools for store setup, middleware, and state management.
+- **Enhanced development experience**: Includes features like `createSlice`, which combines action creators and reducers, and DevTools integration.
+- **Built-in thunk support**: Async logic is easier to manage with less setup.
+
+Overall, Redux Toolkit streamlines and enhances the Redux workflow, making it easier and faster to use.
+
+2.Explain Dispatcher.
+
+In Redux, the **dispatcher** is responsible for sending actions to the store. When you **dispatch** an action, you're telling Redux to take that action and update the state accordingly.
+
+In simple terms, **dispatch** is like saying, "Hey Redux, something happened! Here's what it is, now update the state."
+
+Example:
+```js
+store.dispatch({ type: 'ADD_ITEM', payload: item });
+```
+
+Here, `dispatch` is used to send an action that adds an item to the state.
+
+3.Explain Reducer.
+
+A **reducer** in Redux is a pure function that takes the current state and an action as inputs and returns a new state. It decides how the state should change based on the action.
+
+In simple terms, a **reducer** is like a manager that updates the state when an action is dispatched.
+
+Example:
+```js
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'ADD_ITEM':
+      return { ...state, items: [...state.items, action.payload] };
+    default:
+      return state;
+  }
+}
+```
+
+Here, the reducer updates the state by adding an item when the `ADD_ITEM` action is dispatched.
+
+4.Explain Slice.
+
+A **slice** in Redux Toolkit is a way to organize state, actions, and reducers together in one place. Each slice represents a "piece" of the state and contains:
+
+- The **initial state** for that piece.
+- **Reducers** to update the state.
+- **Action creators** that trigger the reducers.
+
+In simple terms, a **slice** is like a small, self-contained part of your app's state with its own logic.
+
+Example:
+```js
+const itemsSlice = createSlice({
+  name: 'items',
+  initialState: [],
+  reducers: {
+    addItem: (state, action) => {
+      state.push(action.payload);
+    },
+  },
+});
+```
+
+This slice has an `addItem` action and a reducer to handle adding items to the state.
+
+5. Explain Selector.
+
+A **selector** in Redux is a function that extracts or retrieves a specific part of the state from the store. It helps you get the data you need from the global state without having to directly access the entire state object.
+
+In simple terms, a **selector** is like a shortcut to grab specific data from the Redux store.
+
+Example:
+```js
+const selectItems = (state) => state.items;
+```
+
+Here, `selectItems` is a selector that retrieves the `items` part of the state.
+
+6.Explain createSlice and the configuration it takes.
+
+`createSlice` is a function from Redux Toolkit that simplifies creating a slice of your Redux store. It automatically generates actions and reducers for you based on the configuration you provide.
+
+**Configuration for `createSlice`:**
+- **`name`**: A unique name for the slice.
+- **`initialState`**: The initial state for this slice.
+- **`reducers`**: An object where each key is a reducer function for handling actions related to this slice.
+
+Example:
+```js
+const itemsSlice = createSlice({
+  name: 'items',
+  initialState: [],
+  reducers: {
+    addItem: (state, action) => {
+      state.push(action.payload);
+    },
+    removeItem: (state, action) => {
+      return state.filter(item => item.id !== action.payload.id);
+    },
+  },
+});
+```
+
+Here, `createSlice` automatically generates action creators (`addItem`, `removeItem`) and their corresponding reducers based on the configuration.
